@@ -1,0 +1,255 @@
+Metadata-Version: 2.4
+Name: euriai
+Version: 1.0.32
+Summary: Python client for Euri API (euron.one) with CLI, LangChain, and LlamaIndex integration
+Author: Euri
+Author-email: tech@euron.one
+License: MIT
+Keywords: euriai,llm,langchain,llamaindex,langgraph,smolagents,n8n,agents,ai,sdk
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: numpy
+Requires-Dist: pyyaml
+Provides-Extra: langchain-core
+Requires-Dist: langchain-core; extra == "langchain-core"
+Provides-Extra: langchain
+Requires-Dist: langchain; extra == "langchain"
+Provides-Extra: llama-index
+Requires-Dist: llama-index>=0.10.0; extra == "llama-index"
+Provides-Extra: langgraph
+Requires-Dist: langgraph; extra == "langgraph"
+Provides-Extra: smolagents
+Requires-Dist: smolagents; extra == "smolagents"
+Provides-Extra: n8n
+Requires-Dist: requests; extra == "n8n"
+Provides-Extra: crewai
+Requires-Dist: crewai; extra == "crewai"
+Provides-Extra: autogen
+Requires-Dist: pyautogen; extra == "autogen"
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Provides-Extra: all
+Requires-Dist: langchain-core; extra == "all"
+Requires-Dist: langchain; extra == "all"
+Requires-Dist: llama-index>=0.10.0; extra == "all"
+Requires-Dist: langgraph; extra == "all"
+Requires-Dist: smolagents; extra == "all"
+Requires-Dist: crewai; extra == "all"
+Requires-Dist: pyautogen; extra == "all"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: license
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Euri AI Python SDK
+
+A comprehensive Python SDK for the Euri AI API with integrations for popular AI frameworks.
+
+## Installation
+
+### Basic Installation
+```bash
+pip install euriai
+```
+
+### With Optional Integrations
+```bash
+# Install specific integrations
+pip install euriai[autogen]    # AutoGen integration
+pip install euriai[crewai]     # CrewAI integration  
+pip install euriai[langchain]  # LangChain integration
+pip install euriai[smolagents] # SmolAgents integration
+pip install euriai[langgraph]  # LangGraph integration
+pip install euriai[llama-index] # LlamaIndex integration
+
+# Install all integrations
+pip install euriai[all]
+```
+
+## Quick Start
+
+### Basic Usage
+```python
+from euriai import EuriaiClient
+
+# Initialize client
+client = EuriaiClient(
+    api_key="your-euri-api-key",
+    model="gpt-4.1-nano"
+)
+
+# Generate completion
+response = client.generate_completion(
+    prompt="What is artificial intelligence?",
+    temperature=0.7,
+    max_tokens=1000
+)
+
+print(response["choices"][0]["message"]["content"])
+```
+
+### Framework Integrations
+
+The SDK provides seamless integrations with popular AI frameworks. Each integration is optional and can be installed separately.
+
+#### AutoGen Integration
+```python
+# Enhanced AutoGen support - works with both v0.2.x and v0.4+
+from euriai.autogen import EuriaiAutoGen
+
+autogen = EuriaiAutoGen(
+    api_key="your-euri-api-key",
+    default_model="gpt-4.1-nano"
+)
+
+# Check version and capabilities
+version_info = autogen.get_version_info()
+print(f"AutoGen version: {version_info['detected_version']}")
+print(f"Teams support: {version_info['capabilities']['teams']}")
+```
+
+#### CrewAI Integration
+```python
+from euriai.crewai import EuriaiCrewAI
+
+crew = EuriaiCrewAI(
+    api_key="your-euri-api-key",
+    default_model="gpt-4.1-nano"
+)
+```
+
+#### LangChain Integration
+```python
+from euriai.langchain import EuriaiChatModel
+
+chat_model = EuriaiChatModel(
+    api_key="your-euri-api-key",
+    model="gpt-4.1-nano"
+)
+```
+
+### Handling Optional Dependencies
+
+If you try to use an integration without installing its dependencies, you'll get helpful error messages:
+
+```python
+try:
+    from euriai.autogen import EuriaiAutoGen
+except ImportError as e:
+    print(e)
+    # This will show:
+    # AutoGen is not installed. Please install it using one of these methods:
+    # 
+    # Option 1 (Recommended): Install with euriai extras:
+    #   pip install euriai[autogen]
+    # 
+    # Option 2: Install AutoGen directly:
+    #   pip install pyautogen
+    # 
+    # Option 3: Install all euriai integrations:
+    #   pip install euriai[all]
+```
+
+### Semi-Automatic Installation (Optional)
+
+For convenience, you can use the helper function to prompt for automatic installation:
+
+```python
+from euriai import install_optional_dependency
+
+# This will ask user permission before installing
+if install_optional_dependency("pyautogen", "AutoGen", "autogen"):
+    from euriai.autogen import EuriaiAutoGen
+    # Now you can use AutoGen integration
+```
+
+## Available Models
+
+- `gpt-4.1-nano` - Fast and efficient model
+- `gpt-4.1-mini` - Balanced performance model  
+- `gemini-2.5-flash` - Google's Gemini model
+- And more...
+
+## Framework Support
+
+| Framework | Installation | Description |
+|-----------|-------------|-------------|
+| **AutoGen** | `pip install euriai[autogen]` | Multi-agent conversation framework |
+| **CrewAI** | `pip install euriai[crewai]` | Role-playing AI agent framework |
+| **LangChain** | `pip install euriai[langchain]` | Building applications with LLMs |
+| **LangGraph** | `pip install euriai[langgraph]` | Building stateful, multi-actor applications |
+| **SmolAgents** | `pip install euriai[smolagents]` | Minimalist agent framework |
+| **LlamaIndex** | `pip install euriai[llama-index]` | Data framework for LLM applications |
+
+## Examples
+
+### AutoGen Multi-Agent Chat
+```python
+from euriai.autogen import EuriaiAutoGen
+
+autogen = EuriaiAutoGen(api_key="your-api-key")
+
+assistant = autogen.create_assistant_agent(
+    name="Assistant",
+    model="gpt-4.1-nano"
+)
+
+user_proxy = autogen.create_user_proxy_agent(
+    name="User",
+    human_input_mode="NEVER"
+)
+
+result = autogen.run_chat(
+    agent1=user_proxy,
+    agent2=assistant,
+    message="Explain quantum computing",
+    max_turns=3
+)
+```
+
+### CrewAI Workflow
+```python
+from euriai.crewai import EuriaiCrewAI
+
+crew = EuriaiCrewAI(api_key="your-api-key")
+
+crew.add_agent("researcher", {
+    "role": "Researcher",
+    "goal": "Research {topic}",
+    "backstory": "Expert researcher with analytical skills",
+    "model": "gpt-4.1-nano"
+})
+
+crew.add_task("research_task", {
+    "description": "Research the given topic",
+    "expected_output": "Comprehensive research report",
+    "agent": "researcher"
+})
+
+result = crew.run(inputs={"topic": "AI in Healthcare"})
+```
+
+## API Reference
+
+For detailed API documentation, visit: [https://euron.one/euri](https://euron.one/euri)
+
+## Support
+
+- **Documentation**: [https://docs.euron.one](https://euron.one/euri)
+- **GitHub**: [https://github.com/euri-ai/euriai-python-sdk](https://github.com/euri-ai/euriai-python-sdk)
+- **Email**: tech@euron.one
+
+## License
+
+MIT License - see LICENSE file for details.

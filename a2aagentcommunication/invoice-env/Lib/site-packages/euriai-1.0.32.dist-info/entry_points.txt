@@ -1,0 +1,2 @@
+[console_scripts]
+euriai = euriai.cli:main

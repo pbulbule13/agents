@@ -1,0 +1,42 @@
+# Core Frameworks and Libraries
+langchain
+langgraph
+langchain-community
+
+# Language Model Providers
+langchain-openai
+langchain-groq
+google-generativeai
+langchain-google-genai
+
+# Tools and Search Integrations
+langchain-tavily
+tavily-python
+google-search-results
+duckduckgo-search
+
+# Web Scraping and Data Extraction
+requests
+beautifulsoup4
+selenium
+lxml
+
+# Application and UI Frameworks
+streamlit
+
+# Development and Monitoring
+langsmith
+python-dotenv
+
+# New dependencies for enhanced booking
+python-dateutil
+
+# Optional: For specific booking API integrations
+# booking-com-api
+# airbnb-api
+# rapidapi-client
+langchain
+euriai
+holidays
+geopy
+scrapfly-sdk

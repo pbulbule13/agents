@@ -1,0 +1,21 @@
+Date,Region,Product,Channel,Sales,Marketing_Spend,Qualified_Leads,New_Customers
+2025-01-01,North,Starter Plan,Email,12450,2300,320,45
+2025-01-01,South,Starter Plan,Paid Social,10860,4100,275,38
+2025-01-01,West,Starter Plan,Webinar,9650,1800,198,29
+2025-01-01,East,Starter Plan,Partner,11320,2600,256,34
+2025-01-08,North,Growth Plan,Email,18975,3100,365,52
+2025-01-08,South,Growth Plan,Paid Social,20100,5200,342,49
+2025-01-08,West,Growth Plan,Webinar,17680,2100,265,42
+2025-01-08,East,Growth Plan,Partner,18450,3300,292,46
+2025-01-15,North,Scale Plan,Email,25790,3900,402,61
+2025-01-15,South,Scale Plan,Paid Social,27340,6100,388,58
+2025-01-15,West,Scale Plan,Webinar,24560,2600,304,55
+2025-01-15,East,Scale Plan,Partner,25210,3800,318,57
+2025-01-22,North,Starter Plan,Paid Search,13480,2800,298,41
+2025-01-22,South,Growth Plan,Paid Search,19860,3600,336,50
+2025-01-22,West,Scale Plan,Paid Search,26540,4900,412,63
+2025-01-22,East,Starter Plan,Paid Search,14220,3000,306,44
+2025-01-29,North,Growth Plan,Email,19640,3200,372,53
+2025-01-29,South,Scale Plan,Paid Social,28410,6300,399,60
+2025-01-29,West,Starter Plan,Webinar,10230,1900,208,31
+2025-01-29,East,Growth Plan,Partner,19330,3400,287,48
